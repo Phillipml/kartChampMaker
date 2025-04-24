@@ -7,12 +7,9 @@ const newRacer = ref("");
 const racers = ref<Racer[]>([]);
 const emit = defineEmits(["racer-added"]);
 
-const loadRacers = async () => {
-  racers.value = await getAllRacers();
-};
 const handleAdd = async () => {
   if (!newRacer.value.trim()) return;
-  loadRacers();
+  racers.value = await getAllRacers();
   if (racers.value.length >= 20) {
     alert("Max 20 racers!");
     return;

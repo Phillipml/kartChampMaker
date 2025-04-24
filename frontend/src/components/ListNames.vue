@@ -8,6 +8,7 @@ const racers = ref<Racer[]>([]);
 const loadRacers = async () => {
   racers.value = await getAllRacers();
 };
+defineExpose({ loadRacers });
 onMounted(async () => {
   try {
     racers.value = await getAllRacers();
