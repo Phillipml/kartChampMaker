@@ -10,12 +10,12 @@ const emit = defineEmits(["racer-added"]);
 const handleAdd = async () => {
   if (!newRacer.value.trim()) return;
   racers.value = await getAllRacers();
-  if (racers.value.length >= 20) {
-    alert("Max 20 racers!");
+  if (racers.value.length >= 24) {
+    alert("Min 10 and max 24 racers!");
     return;
   }
   try {
-    await addRacer(newRacer.value);
+    await addRacer(newRacer.value.toUpperCase());
     newRacer.value = "";
     emit("racer-added");
   } catch (err) {
